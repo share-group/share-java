@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package com.share.core.protocol.protobuf.demo;
+
+option optimize_for = LITE_RUNTIME;
+
+
+message ReqDemo{
+	sint32 protocol = 1;
+	sint32 id = 2;
+	string name = 3;
+	string email = 4;
+}
+
+message ResDemo{
+	sint32 protocol = 1;
+	string email = 2;
+}

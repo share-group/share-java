@@ -1,0 +1,1 @@
+include 'share-core','share-client','share-test','share-dao','share-service','share-soa','share-protocol'

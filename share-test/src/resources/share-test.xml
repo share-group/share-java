@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:tx="http://www.springframework.org/schema/tx" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context" xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:task="http://www.springframework.org/schema/task" xmlns:aop="http://www.springframework.org/schema/aop" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd 
+		http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task.xsd 
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+
+	<import resource="classpath:share-core.xml" />
+	<import resource="classpath:share-soa.xml" />
+	<import resource="classpath:share-dao.xml" />
+
+
+
+	<!-- 数据格式转换器 -->
+	<mvc:annotation-driven>
+		<mvc:argument-resolvers>
+			<bean class="com.share.test.http.server.ProtocolConverter" />
+		</mvc:argument-resolvers>
+	</mvc:annotation-driven>
+
+	<bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
+		<property name="messageConverters">
+			<list>
+				<bean class="com.share.test.http.server.ShareHttpMessageConverter" />
+			</list>
+		</property>
+	</bean>
+
+	<!-- 自动加载配置 -->
+	<bean class="com.share.core.annotation.processor.ConfigProcessor" init-method="init">
+		<!-- 定义要扫描的包，可用逗号分割 -->
+		<property name="scanPackage" value="com.share.core.data.config" />
+		<!-- 定义要扫描的注解类名 -->
+		<property name="annotationClass" value="com.share.core.annotation.Config" />
+	</bean>
+
+	<!-- 匹配socket协议号 -->
+	<bean class="com.share.core.annotation.processor.SocketHandlerProcessor" init-method="init">
+		<!-- 定义要扫描的包，可用逗号分割 -->
+		<property name="scanPackage" value="com.share.test.socket.handler" />
+		<!-- 定义要扫描的注解类名 -->
+		<property name="annotationClass" value="com.share.core.annotation.SocketHandler" />
+	</bean>
+
+	<!-- 反射协议 -->
+	<bean class="com.share.core.annotation.processor.ProtocolProcessor" init-method="init">
+		<!-- 定义要扫描的包，可用逗号分割 -->
+		<property name="scanPackage" value="com.share.test.protocol" />
+		<!-- 定义要扫描的注解类名 -->
+		<property name="annotationClass" value="com.share.core.annotation.Protocol" />
+	</bean>
+
+	<!-- 后台菜单扫描(这个不需要定义扫描的包了) -->
+	<bean class="com.share.core.annotation.processor.MenuProcessor" init-method="init">
+		<!-- 定义要扫描的包，可用逗号分割 -->
+		<property name="scanPackage" value="com.share.test.http.server" />
+		<!-- 定义要扫描的注解类名 -->
+		<property name="annotationClass" value="com.share.core.annotation.Menu" />
+	</bean>
+
+	<!-- 线程池 -->
+	<bean class="com.share.core.threadPool.DefaultThreadPool" init-method="init" destroy-method="close">
+		<!-- 线程池大小 -->
+		<property name="poolSize" value="10" />
+	</bean>
+
+	<!-- jwt -->
+	<bean class="com.share.core.component.JwtService" init-method="init">
+		<!-- 实例的名字(选配项，多实例的时候适用) -->
+		<!-- <property name="name" value="xxxx" /> -->
+		<!-- RSA公钥pem文件地址 -->
+		<property name="publicKey" value="cert/1024/rsa_public_key.pem" />
+		<!-- RSA私钥pem文件地址 -->
+		<property name="privateKey" value="cert/1024/rsa_pkcs8_private_key.pem" />
+	</bean>
+
+	<!-- http客户端 -->
+	<bean class="com.share.core.client.HttpClient" init-method="init" destroy-method="close">
+		<!-- 超时时间，单位毫秒 -->
+		<property name="connectTimeout" value="10000" />
+		<!-- 证书编码格式 -->
+		<!-- <property name="keystore" value="PKCS12" /> -->
+		<!-- 证书路径(相对于classpath) -->
+		<!-- <property name="cert" value="cert/apiclient_cert.p12" /> -->
+		<!-- 证书密码 -->
+		<!-- <property name="password" value="1269149901" /> -->
+		<!-- SSL加密算法(","分割) -->
+		<!-- <property name="sslProtocols" value="TLSv1" /> -->
+	</bean>
+
+	<!-- 定时器配置 -->
+	<task:annotation-driven executor="shareExecutor" scheduler="shareScheduler" />
+	<task:executor id="shareExecutor" pool-size="2" />
+	<task:scheduler id="shareScheduler" pool-size="2" />
+</beans>

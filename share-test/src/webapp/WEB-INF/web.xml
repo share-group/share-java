@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_4_1.xsd" version="4.1">
+	<!-- 定义servlet -->
+	<servlet>
+		<servlet-name>share-demo</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>classpath:share-test.xml</param-value>
+		</init-param>
+		<async-supported>true</async-supported>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<!-- 定义servlet要拦截的 -->
+	<servlet-mapping>
+		<servlet-name>share-demo</servlet-name>
+		<url-pattern>/</url-pattern>
+	</servlet-mapping>
+	<!-- 用默认servlet过滤网页资源文件 -->
+	<servlet-mapping>
+		<servlet-name>default</servlet-name>
+		<url-pattern>*.css</url-pattern>
+		<url-pattern>*.js</url-pattern>
+		<url-pattern>*.ico</url-pattern>
+	</servlet-mapping>
+	<!-- 定义过滤器 -->
+	<filter>
+		<filter-name>share-demo</filter-name>
+		<filter-class>com.share.core.filter.ProtocolFilter</filter-class>
+		<async-supported>true</async-supported>
+	</filter>
+	<!-- 定义过滤器要拦截的东西 -->
+	<filter-mapping>
+		<filter-name>share-demo</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	<filter>
+		<filter-name>QoSFilter</filter-name>
+		<filter-class>com.share.test.http.server.ParsePriorityQoSFilter</filter-class>
+		<async-supported>true</async-supported>
+		<init-param>
+			<param-name>maxRequests</param-name>
+			<param-value>5</param-value>
+		</init-param>
+		<init-param>
+			<param-name>waitMS</param-name>
+			<param-value>1</param-value>
+		</init-param>
+		<init-param>
+			<param-name>suspendMs</param-name>
+			<param-value>5000</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>QoSFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	<session-config>
+		<session-timeout>1</session-timeout><!-- session失效时间，单位是分钟 -->
+	</session-config>
+</web-app>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tx="http://www.springframework.org/schema/tx" xmlns:context="http://www.springframework.org/schema/context" xmlns:p="http://www.springframework.org/schema/p" xmlns:aop="http://www.springframework.org/schema/aop" xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:task="http://www.springframework.org/schema/task"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans    
+    http://www.springframework.org/schema/beans/spring-beans-4.1.xsd    
+    http://www.springframework.org/schema/tx    
+    http://www.springframework.org/schema/tx/spring-tx-4.1.xsd   
+    http://www.springframework.org/schema/context   
+    http://www.springframework.org/schema/context/spring-context-4.1.xsd 
+    http://www.springframework.org/schema/aop
+    http://www.springframework.org/schema/aop/spring-aop-4.1.xsd  
+    http://www.springframework.org/schema/mvc   
+    http://www.springframework.org/schema/mvc/spring-mvc-4.1.xsd
+    http://www.springframework.org/schema/task
+    http://www.springframework.org/schema/task/spring-task-4.1.xsd">
+
+	<!-- 数据库连接 -->
+	<bean id="dataSource" parent="baseDataSource" p:url="${jdbc.url}" />
+
+	<!-- 数据库连接池配置 -->
+	<bean id="baseDataSource" class="com.alibaba.druid.pool.DruidDataSource" destroy-method="close">
+		<property name="driverClassName" value="com.mysql.cj.jdbc.Driver" />
+		<property name="username" value="${jdbc.username}" />
+		<property name="password" value="${jdbc.password}" />
+
+		<!-- 配置初始化大小、最小、最大 -->
+		<property name="initialSize" value="8" />
+		<property name="minIdle" value="8" />
+		<property name="maxActive" value="8" />
+
+		<!-- 配置获取连接等待超时的时间 -->
+		<property name="maxWait" value="60000" />
+
+		<!-- 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒 -->
+		<property name="timeBetweenEvictionRunsMillis" value="60000" />
+
+		<!-- 配置一个连接在池中最小生存的时间，单位是毫秒 -->
+		<property name="minEvictableIdleTimeMillis" value="300000" />
+
+		<property name="validationQuery" value="SELECT 'x'" />
+		<property name="testWhileIdle" value="true" />
+		<property name="testOnBorrow" value="false" />
+		<property name="testOnReturn" value="false" />
+	</bean>
+	
+	
+	<!-- 反射pojo类 -->
+	<bean class="com.share.core.annotation.processor.PojoProcessor" init-method="init">
+		<!-- 定义要扫描的包，可用逗号分割 -->
+		<property name="scanPackage" value="com.share.dao.model" />
+		<!-- 定义要扫描的注解类名 -->
+		<property name="annotationClass" value="com.share.core.annotation.Pojo" />
+	</bean>
+</beans>

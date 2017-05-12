@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:task="http://www.springframework.org/schema/task"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans    
+    http://www.springframework.org/schema/beans/spring-beans-4.1.xsd    
+    http://www.springframework.org/schema/tx    
+    http://www.springframework.org/schema/tx/spring-tx-4.1.xsd   
+    http://www.springframework.org/schema/context   
+    http://www.springframework.org/schema/context/spring-context-4.1.xsd 
+    http://www.springframework.org/schema/aop
+    http://www.springframework.org/schema/aop/spring-aop-4.1.xsd  
+    http://www.springframework.org/schema/mvc   
+    http://www.springframework.org/schema/mvc/spring-mvc-4.1.xsd
+    http://www.springframework.org/schema/task
+    http://www.springframework.org/schema/task/spring-task-4.1.xsd">
+
+	<!-- thrift http server -->
+	<bean id="servletHandlerAdapter" class="org.springframework.web.servlet.handler.SimpleServletHandlerAdapter" />
+	<bean name="/soa/test" class="com.share.soa.thrift.server.ThriftHttpServlet" init-method="init">
+		<property name="serviceClass" value="com.share.soa.thrift.protocol.ShareObjectService"/>
+		<property name="protocolClass" value="org.apache.thrift.protocol.TCompactProtocol"/>
+		<property name="handlerClass" value="com.share.soa.thrift.impl.ShareObjectServiceHandler"/>
+	</bean>
+	<bean name="/soa/test2" class="com.share.soa.thrift.server.ThriftHttpServlet" init-method="init">
+		<property name="serviceClass" value="com.share.soa.thrift.protocol.Userf"/>
+		<property name="protocolClass" value="org.apache.thrift.protocol.TCompactProtocol"/>
+		<property name="handlerClass" value="com.share.soa.thrift.impl.UserHandler"/>
+	</bean>
+
+
+	<!-- thrift http client -->
+	<bean class="com.share.soa.thrift.client.ThriftHttpClient"/>
+	<bean class="com.share.soa.thrift.client.ThriftHttpClientFactory">
+		<property name="className" value="com.share.soa.thrift.protocol.ShareObjectService" />
+	</bean> 
+	<bean class="com.share.soa.thrift.client.ThriftHttpClientFactory">
+		<property name="className" value="com.share.soa.thrift.protocol.Userf" />
+	</bean> 
+</beans>

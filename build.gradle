@@ -1,0 +1,205 @@
+
+
+buildscript {
+		// http://mvnrepository.com  
+        repositories {
+			maven { url "http://127.0.0.1:8081/repository/maven-central/" }
+			maven { url "http://repository.exoplatform.org/content/groups/public/" }
+        }
+        dependencies {
+            classpath "net.saliman:gradle-cobertura-plugin:2.4.0"
+        }
+}
+
+subprojects { 
+	apply plugin: 'java'
+	apply plugin: 'eclipse'
+	apply plugin: 'idea'
+    apply plugin: 'cobertura'
+	
+	// 过滤不打包的文件(只会过滤资源文件)
+	jar.exclude 'log4j2.xml'
+	jar.exclude 'config.properties'
+	jar.exclude 'nginx'
+	jar.exclude 'config'
+
+    test {
+        ignoreFailures = true
+        forkEvery = 5
+        maxParallelForks = Runtime.runtime.availableProcessors() * 5
+        exclude 'org/databene/**'
+    }
+
+    cobertura {
+        coverageFormats = ['xml']
+    }
+
+    [compileJava, compileTestJava]*.options*.encoding = "UTF-8"
+	
+	repositories {
+		maven { url "http://127.0.0.1:8081/repository/maven-central/" }
+		maven { url "http://repository.exoplatform.org/content/groups/public/" }
+	}
+	
+	task copyLib(type: Sync, dependsOn: jar) {
+		from configurations.compile
+		from jar.archivePath
+		into 'compile'
+	}
+	
+	task copyWebapp(type: Sync) {
+		from 'src/webapp'
+		into 'compile/webapp'
+	}
+	sourceSets {
+		main {
+			java {
+				srcDir 'src/java'
+			}
+			resources {
+				srcDir 'src/resources'
+			}
+		}
+	}
+}
+project(':share-core') {
+	dependencies{
+	    compile fileTree( dir: "lib", include: '*.jar' )
+		compile group: 'org.apache.kafka', name: 'kafka-clients', version: '0.10.2.0'
+		compile group: 'org.apache.kafka', name: 'kafka_2.11', version: '0.10.2.0'
+		compile group: 'com.notnoop.apns', name: 'apns', version: '1.0.0.Beta6'
+		compile 'org.jsoup:jsoup:1.10.2'
+		compile 'com.itextpdf.tool:xmlworker:5.5.10'
+		compile 'com.itextpdf:itextpdf:5.5.10'
+		compile 'com.itextpdf:itext-asian:5.2.0'
+		compile 'org.bouncycastle:bcprov-ext-jdk15on:1.54'
+		compile 'com.google.zxing:core:3.3.0'
+		compile 'com.google.zxing:javase:3.3.0'
+		compile 'com.google.zxing:zxing-parent:3.3.0'
+		compile 'javax.servlet:javax.servlet-api:3.1.0'
+	    compile 'aopalliance:aopalliance:1.0'
+		compile 'org.ow2.asm:asm:5.0.4'
+		compile 'org.ow2.asm:asm-commons:5.0.4'
+		compile 'org.aspectj:aspectjweaver:1.8.9'
+		compile 'commons-cli:commons-cli:1.3.1'
+		compile 'commons-codec:commons-codec:1.10'
+		compile 'commons-io:commons-io:2.5'
+		compile 'org.apache.poi:poi:3.15'
+		compile 'org.apache.poi:poi-scratchpad:3.15'
+		compile 'org.apache.poi:poi-ooxml:3.15'
+		compile 'org.apache.commons:commons-lang3:3.4'
+		compile 'commons-logging:commons-logging:1.2'
+		compile 'org.apache.commons:commons-pool2:2.4.2'
+		compile 'com.alibaba:druid:1.0.27'
+		compile 'com.google.code.gson:gson:2.8.0'
+		compile 'com.google.guava:guava:21.0'
+		compile 'com.auth0:java-jwt:3.1.0'
+		compile 'junit:junit:4.12'
+		compile 'org.javassist:javassist:3.21.0-GA'
+		compile 'org.apache.httpcomponents:httpclient:4.5.2'
+		compile 'org.apache.httpcomponents:httpmime:4.5.2'
+		compile group: 'redis.clients', name: 'jedis', version: '2.9.0'
+		compile group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.8.2'
+		compile group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.8.2'
+		compile group: 'org.apache.logging.log4j', name: 'log4j-jcl', version: '2.8.2'
+		compile group: 'org.apache.logging.log4j', name: 'log4j-web', version: '2.8.2'
+		compile group: 'org.apache.logging.log4j', name: 'log4j-slf4j-impl', version: '2.8.2'
+		compile group: 'org.eclipse.jetty', name: 'jetty-annotations', version: '9.4.3.v20170317'
+		compile group: 'org.eclipse.jetty', name: 'jetty-client', version: '9.4.3.v20170317'
+		compile group: 'org.eclipse.jetty', name: 'jetty-continuation', version: '9.4.3.v20170317'
+		compile group: 'org.eclipse.jetty', name: 'jetty-deploy', version: '9.4.3.v20170317'
+		compile group: 'org.eclipse.jetty', name: 'jetty-http', version: '9.4.3.v20170317'
+		compile group: 'org.eclipse.jetty', name: 'jetty-io', version: '9.4.3.v20170317'
+		compile group: 'org.eclipse.jetty', name: 'jetty-jaas', version: '9.4.3.v20170317'
+		compile group: 'org.eclipse.jetty', name: 'jetty-jaspi', version: '9.4.3.v20170317'
+		compile group: 'org.eclipse.jetty', name: 'jetty-jmx', version: '9.4.3.v20170317'
+		compile group: 'org.eclipse.jetty', name: 'jetty-jndi', version: '9.4.3.v20170317'
+		compile group: 'org.eclipse.jetty', name: 'jetty-plus', version: '9.4.3.v20170317'
+		compile group: 'org.eclipse.jetty', name: 'jetty-proxy', version: '9.4.3.v20170317'
+		compile group: 'org.eclipse.jetty', name: 'jetty-quickstart', version: '9.4.3.v20170317'
+		compile group: 'org.eclipse.jetty', name: 'jetty-rewrite', version: '9.4.3.v20170317'
+		compile group: 'org.eclipse.jetty', name: 'jetty-security', version: '9.4.3.v20170317'
+		compile group: 'org.eclipse.jetty', name: 'jetty-server', version: '9.4.3.v20170317'
+		compile group: 'org.eclipse.jetty', name: 'jetty-servlet', version: '9.4.3.v20170317'
+		compile group: 'org.eclipse.jetty', name: 'jetty-servlets', version: '9.4.3.v20170317'
+		compile group: 'org.eclipse.jetty', name: 'jetty-spring', version: '9.4.3.v20170317'
+		compile group: 'org.eclipse.jetty', name: 'jetty-util', version: '9.4.3.v20170317'
+		compile group: 'org.eclipse.jetty', name: 'jetty-webapp', version: '9.4.3.v20170317'
+		compile group: 'org.eclipse.jetty', name: 'jetty-xml', version: '9.4.3.v20170317'
+		compile group: 'org.eclipse.jetty.http2', name: 'http2-server', version: '9.4.3.v20170317'
+		compile group: 'org.eclipse.jetty.http2', name: 'http2-client', version: '9.4.3.v20170317'
+		compile 'javax.mail:mail:1.4.7'
+		compile 'org.mongodb:mongo-java-driver:3.4.2'
+		compile 'mysql:mysql-connector-java:6.0.6'
+		compile 'io.netty:netty:3.10.6.Final'
+		compile 'io.netty:netty-all:5.0.0.Alpha2'
+		compile 'net.sf.supercsv:super-csv:2.4.0'
+		compile 'com.belerweb:pinyin4j:2.5.1'
+		compile 'com.basho.riak:riak-client:2.1.0'
+		compile 'com.basho.riak.protobuf:riak-pb:2.0.0.16'
+		compile 'com.google.protobuf:protobuf-java:3.1.0'
+		compile 'org.springframework:spring-aop:4.3.7.RELEASE'
+		compile 'org.springframework:spring-aspects:4.3.7.RELEASE'
+		compile 'org.springframework:spring-beans:4.3.7.RELEASE'
+		compile 'org.springframework:spring-context:4.3.7.RELEASE'
+		compile 'org.springframework:spring-context-support:4.3.7.RELEASE'
+		compile 'org.springframework:spring-core:4.3.7.RELEASE'
+		compile 'org.springframework:spring-expression:4.3.7.RELEASE'
+		compile group: 'org.springframework', name: 'spring-jdbc', version: '4.3.7.RELEASE'
+		compile group: 'org.springframework', name: 'spring-orm', version: '4.3.7.RELEASE'
+		compile group: 'org.springframework', name: 'spring-test', version: '4.3.7.RELEASE'
+		compile group: 'org.springframework', name: 'spring-tx', version: '4.3.7.RELEASE'
+		compile group: 'org.springframework', name: 'spring-web', version: '4.3.7.RELEASE'
+		compile group: 'org.springframework', name: 'spring-webmvc', version: '4.3.7.RELEASE'
+		compile group: 'org.springframework.kafka', name: 'spring-kafka', version: '1.2.0.RELEASE'
+		compile group: 'org.apache.thrift', name: 'libthrift', version: '0.9.3'
+		compile group: 'com.squareup.okhttp3', name: 'okhttp', version: '3.6.0'
+    }
+}
+project(':share-client') {
+	dependencies{
+	   compile project(':share-core')
+	   compile project(':share-test')
+	   compile fileTree( dir: "lib", include: '*.jar' )
+	}
+	task deploy(dependsOn: [copyLib, copyWebapp])
+}
+project(':share-test') {
+	dependencies{
+	   compile project(':share-core')
+	   compile project(':share-dao')
+	   compile project(':share-service')
+	   compile project(':share-soa')
+	   compile project(':share-protocol')
+	   compile fileTree( dir: "lib", include: '*.jar' )
+	}
+	task deploy(dependsOn: [copyLib, copyWebapp])
+}
+project(':share-dao') {
+	dependencies{
+	   compile project(':share-core')
+	   compile fileTree( dir: "lib", include: '*.jar' )
+	}
+	task deploy(dependsOn: [copyLib, copyWebapp])
+}
+project(':share-service') {
+	dependencies{
+	   compile project(':share-core')
+	   compile fileTree( dir: "lib", include: '*.jar' )
+	}
+	task deploy(dependsOn: [copyLib, copyWebapp])
+}
+project(':share-soa') {
+	dependencies{
+		compile fileTree( dir: "lib", include: '*.jar' )
+		compile project(':share-core')
+	}
+	task deploy(dependsOn: [copyLib, copyWebapp])
+}
+project(':share-protocol') {
+	dependencies{
+		compile fileTree( dir: "lib", include: '*.jar' )
+		compile project(':share-core')
+	}
+	task deploy(dependsOn: [copyLib, copyWebapp])
+}

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:context="http://www.springframework.org/schema/context" xmlns:task="http://www.springframework.org/schema/task" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx" xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans     
+        http://www.springframework.org/schema/beans/spring-beans.xsd    
+        http://www.springframework.org/schema/context     
+        http://www.springframework.org/schema/context/spring-context.xsd    
+       	http://www.springframework.org/schema/tx     
+       	http://www.springframework.org/schema/tx/spring-tx.xsd    
+       	http://www.springframework.org/schema/aop     
+       	http://www.springframework.org/schema/aop/spring-aop.xsd   
+		http://www.springframework.org/schema/mvc
+		http://www.springframework.org/schema/mvc/spring-mvc.xsd
+		http://www.springframework.org/schema/task 
+		http://www.springframework.org/schema/task/spring-task.xsd">
+
+	<!-- 首先加载spring获取bean类 -->
+	<bean class="com.share.core.util.SpringUtil" />
+
+	<!--扫描注解 -->
+	<context:component-scan base-package="com.share" />
+
+	<!-- 加载properties文件 -->
+	<context:property-placeholder location="classpath:config.properties" />
+
+	<aop:aspectj-autoproxy />
+	<context:annotation-config />
+
+	<!-- 启动redis -->
+	<bean class="com.share.core.redis.Redis" init-method="single" destroy-method="close" />
+
+	<!-- 启动Mongodb -->
+	<bean class="com.share.core.mongo.Mongodb" init-method="init" destroy-method="close" />
+</beans>
