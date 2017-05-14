@@ -129,7 +129,7 @@ project(':share-core') {
 		compile group: 'org.springframework', name: 'spring-tx', version: '4.3.8.RELEASE'
 		compile group: 'org.springframework', name: 'spring-web', version: '4.3.8.RELEASE'
 		compile group: 'org.springframework', name: 'spring-webmvc', version: '4.3.8.RELEASE'
-		compile group: 'org.springframework.kafka', name: 'spring-kafka', version: '1.2.0.RELEASE'
+		compile group: 'org.springframework.kafka', name: 'spring-kafka', version: '1.2.1.RELEASE'
 		compile group: 'org.apache.thrift', name: 'libthrift', version: '0.9.3'
 		compile group: 'com.squareup.okhttp3', name: 'okhttp', version: '3.7.0'
     }
