@@ -3,6 +3,7 @@
 :开启gradle daemon模式
 del /s/q %USERPROFILE%\.gradle\gradle.properties
 echo org.gradle.daemon=false > %USERPROFILE%\.gradle\gradle.properties
+rd /s/q %cd%\.gradle\
 
 :生成pb文件
 rd /s /q %cd%\share-core\src\java\com\share\core\protocol\protobuf
