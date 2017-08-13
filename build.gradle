@@ -15,7 +15,6 @@ subprojects {
 	apply plugin: 'java'
 	apply plugin: 'eclipse'
 	apply plugin: 'idea'
-    apply plugin: 'cobertura'
 	
 	// 过滤不打包的文件(只会过滤资源文件)
 	jar.exclude 'log4j2.xml'
@@ -28,10 +27,6 @@ subprojects {
         forkEvery = 5
         maxParallelForks = Runtime.runtime.availableProcessors() * 5
         exclude 'org/databene/**'
-    }
-
-    cobertura {
-        coverageFormats = ['xml']
     }
 
     [compileJava, compileTestJava]*.options*.encoding = "UTF-8"
