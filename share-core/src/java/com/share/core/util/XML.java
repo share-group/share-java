@@ -39,8 +39,7 @@ public final class XML {
 	 * @throws IOException
 	 * @throws ParserConfigurationException
 	 */
-	private final static Document getDoc(String file) throws SAXException,
-			IOException, ParserConfigurationException {
+	private final static Document getDoc(String file) throws SAXException, IOException, ParserConfigurationException {
 		DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
 		DocumentBuilder db = dbf.newDocumentBuilder();
 		return db.parse(new File(file));
@@ -58,14 +57,12 @@ public final class XML {
 	 * @throws SAXException
 	 * @throws IOException
 	 */
-	public final static HashMap<String, String> read(String file, String tagName)
-			throws ParserConfigurationException, SAXException, IOException {
+	public final static HashMap<String, String> read(String file, String tagName) throws ParserConfigurationException, SAXException, IOException {
 		NodeList list = getDoc(file).getElementsByTagName(tagName);
 		HashMap<String, String> data = new HashMap<String, String>();
 		for (int i = 0; i < list.getLength(); i++) {
 			Node node = list.item(i);
-			data.put(node.getAttributes().getNamedItem("name").getNodeValue(),
-					node.getAttributes().getNamedItem("value").getNodeValue());
+			data.put(node.getAttributes().getNamedItem("name").getNodeValue(), node.getAttributes().getNamedItem("value").getNodeValue());
 		}
 		return data;
 	}
@@ -83,9 +80,7 @@ public final class XML {
 	 * @throws SAXException
 	 * @throws TransformerException
 	 */
-	public final static void editXML(String file, String tagName,
-			HashMap<String, String> modifyContent) throws IOException,
-			ParserConfigurationException, SAXException, TransformerException {
+	public final static void editXML(String file, String tagName, HashMap<String, String> modifyContent) throws IOException, ParserConfigurationException, SAXException, TransformerException {
 		Document doc = getDoc(file);
 		NodeList list = doc.getElementsByTagName(tagName);
 		for (int i = 0; i < list.getLength(); i++) {
@@ -93,8 +88,7 @@ public final class XML {
 			NamedNodeMap attrList = node.getAttributes();
 			String key = attrList.getNamedItem("name").getNodeValue();
 			if (modifyContent.containsKey(key)) {
-				attrList.getNamedItem("value").setNodeValue(
-						modifyContent.get(key));
+				attrList.getNamedItem("value").setNodeValue(modifyContent.get(key));
 			}
 		}
 		doc2XmlFile(doc, file);
@@ -110,9 +104,7 @@ public final class XML {
 	 * @throws ParserConfigurationException
 	 * @throws TransformerException
 	 */
-	public final static void createXML(String file, String tagName,
-			HashMap<String, Object> data) throws ParserConfigurationException,
-			TransformerException {
+	public final static void createXML(String file, String tagName, HashMap<String, Object> data) throws ParserConfigurationException, TransformerException {
 		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 		DocumentBuilder builder = factory.newDocumentBuilder();
 		Document doc = builder.newDocument();
@@ -134,8 +126,7 @@ public final class XML {
 	 * @param file
 	 * @throws TransformerException
 	 */
-	private static void doc2XmlFile(Document document, String file)
-			throws TransformerException {
+	private static void doc2XmlFile(Document document, String file) throws TransformerException {
 		TransformerFactory tFactory = TransformerFactory.newInstance();
 		Transformer transformer = tFactory.newTransformer();
 		DOMSource source = new DOMSource(document);

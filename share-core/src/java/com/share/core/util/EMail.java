@@ -20,8 +20,8 @@ import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  * 电子邮件类(基于javax.mail实现)
@@ -32,7 +32,7 @@ public class EMail {
 	/**
 	 * logger
 	 */
-	private final static Logger logger = LoggerFactory.getLogger(EMail.class);
+	private final static Logger logger = LogManager.getLogger(EMail.class);
 	/**
 	 * smtp服务器地址
 	 */

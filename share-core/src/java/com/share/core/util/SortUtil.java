@@ -12,8 +12,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  * 通用排序类
@@ -23,7 +23,7 @@ public final class SortUtil<K, V> {
 	/**
 	 * logger
 	 */
-	private final static Logger logger = LoggerFactory.getLogger(SortUtil.class);
+	private final static Logger logger = LogManager.getLogger(SortUtil.class);
 	/**
 	 * 装载已经用过的规则 实现类似单例模式
 	 */
@@ -340,9 +340,10 @@ public final class SortUtil<K, V> {
 		/**
 		 * 升序
 		 */
-		ASC, /**
-				 * 反序
-				 */
+		ASC,
+		/**
+		 * 反序
+		 */
 		DESC;
 	}
 
@@ -355,9 +356,10 @@ public final class SortUtil<K, V> {
 		/**
 		 * 根据key来排序
 		 */
-		KEY, /**
-				 * 根据value来排序
-				 */
+		KEY,
+		/**
+		 * 根据value来排序
+		 */
 		VALUE;
 	}
 }

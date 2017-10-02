@@ -12,8 +12,8 @@ import java.util.Map.Entry;
 import java.util.Set;
 
 import org.apache.commons.pool2.impl.GenericObjectPoolConfig;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Value;
 
 import com.share.core.exception.RedisCommandNotSupportException;
@@ -45,7 +45,7 @@ public class Redis {
 	/**
 	 * logger
 	 */
-	private final static Logger logger = LoggerFactory.getLogger(Redis.class);
+	private final static Logger logger = LogManager.getLogger(Redis.class);
 	/**
 	 * 每次管道最大数量
 	 */

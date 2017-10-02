@@ -10,8 +10,8 @@ import java.util.Map.Entry;
 
 import javax.annotation.PostConstruct;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTCreator;
@@ -67,9 +67,9 @@ public class JwtService {
 	public void init() {
 		name = StringUtil.getString(name);
 		if (name.isEmpty()) {
-			logger = LoggerFactory.getLogger(JwtService.class);
+			logger = LogManager.getLogger(JwtService.class);
 		} else {
-			logger = LoggerFactory.getLogger(name);
+			logger = LogManager.getLogger(name);
 		}
 
 		//加载公钥    

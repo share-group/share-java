@@ -4,8 +4,8 @@ import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
 import java.util.Set;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.share.core.exception.ParametersIncorrectException;
 import com.share.core.util.SystemUtil;
@@ -19,7 +19,7 @@ abstract class AnnotationProcessor {
 	/**
 	 * logger
 	 */
-	protected Logger logger = LoggerFactory.getLogger(getClass());
+	protected Logger logger = LogManager.getLogger(getClass());
 	/**
 	 * 要扫描的包名
 	 */

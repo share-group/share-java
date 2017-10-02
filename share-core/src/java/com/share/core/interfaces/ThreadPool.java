@@ -5,8 +5,8 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.share.core.util.SystemUtil;
 
@@ -59,7 +59,7 @@ public abstract class ThreadPool {
 			throw new RuntimeException("please define a class extends " + ThreadPool.class);
 		}
 		executor = Executors.newFixedThreadPool(poolSize);
-		logger = LoggerFactory.getLogger(name);
+		logger = LogManager.getLogger(name);
 		logger.info("inited threadPool, size {}", poolSize);
 	}
 

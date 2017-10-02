@@ -3,8 +3,8 @@ package com.share.core.nsq;
 import java.lang.reflect.Method;
 import java.util.List;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Value;
 
 import com.share.core.annotation.NsqCallback;
@@ -26,7 +26,7 @@ public final class NsqService {
 	/**
 	 * logger
 	 */
-	private Logger logger = LoggerFactory.getLogger(getClass());
+	private Logger logger = LogManager.getLogger(getClass());
 	/**
 	 * nsq生产者
 	 */
@@ -81,7 +81,7 @@ public final class NsqService {
 	public void init() {
 		producer = new NSQProducer();
 		for (String server : nsqd.trim().split(",")) {
-			producer.addAddress(server.trim(), 4150, /*解决win系统osx系统连接nsq慢的问题*/(FileSystem.isWindows() || FileSystem.isMacOSX()) ? 1 : poolSize);
+			producer.addAddress(server.trim(), 4150, /* 解决win系统osx系统连接nsq慢的问题 */(FileSystem.isWindows() || FileSystem.isMacOSX()) ? 1 : poolSize);
 		}
 		producer.start();
 

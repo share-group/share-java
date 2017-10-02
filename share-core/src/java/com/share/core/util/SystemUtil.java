@@ -20,8 +20,8 @@ import java.util.Set;
 import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  * 系统工具
@@ -33,7 +33,7 @@ public final class SystemUtil {
 	/**
 	 * logger
 	 */
-	private final static Logger logger = LoggerFactory.getLogger(SystemUtil.class);
+	private final static Logger logger = LogManager.getLogger(SystemUtil.class);
 	/**
 	 * 系统通信key
 	 */

@@ -6,8 +6,8 @@ import java.net.UnknownHostException;
 import java.util.Enumeration;
 import java.util.List;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.google.common.collect.Lists;
 
@@ -18,7 +18,7 @@ public final class Ip {
 	/**
 	 * logger
 	 */
-	private final static Logger logger = LoggerFactory.getLogger(Ip.class);
+	private final static Logger logger = LogManager.getLogger(Ip.class);
 
 	/**
 	 * 把ip转为10进制长整型

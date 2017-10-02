@@ -4,8 +4,8 @@ import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioSocketChannel;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.share.core.exception.IllegalPortException;
 import com.share.core.interfaces.AbstractSocketServerInitializer;
@@ -19,7 +19,7 @@ public final class SocketClient {
 	/**
 	 * logger
 	 */
-	private Logger logger = LoggerFactory.getLogger(getClass());
+	private Logger logger = LogManager.getLogger(getClass());
 	/**
 	 * netty bootstrap 对象
 	 */

@@ -27,8 +27,8 @@ import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.DESKeySpec;
 import javax.crypto.spec.SecretKeySpec;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  * 加密类
@@ -37,7 +37,7 @@ public final class Secret {
 	/**
 	 * logger
 	 */
-	private final static Logger logger = LoggerFactory.getLogger(Secret.class);
+	private final static Logger logger = LogManager.getLogger(Secret.class);
 	/**
 	 * 系统加密key
 	 */
@@ -121,7 +121,7 @@ public final class Secret {
 			return null;
 		}
 	}
-	
+
 	/**
 	 * DES加密
 	 * @param bytes 待加密的内容
@@ -181,7 +181,7 @@ public final class Secret {
 			return null;
 		}
 	}
-	
+
 	/**
 	 * DES解密
 	 * @param encryptBytes 待解密的byte[]

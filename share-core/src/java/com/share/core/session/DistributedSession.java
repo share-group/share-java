@@ -6,8 +6,8 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -31,7 +31,7 @@ public class DistributedSession implements Session {
 	/**
 	 * logger
 	 */
-	private final static Logger logger = LoggerFactory.getLogger(DistributedSession.class);
+	private final static Logger logger = LogManager.getLogger(DistributedSession.class);
 	/**
 	 * 公共sessionKey
 	 */

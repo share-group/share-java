@@ -7,8 +7,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Value;
 
 import com.basho.riak.client.api.RiakClient;
@@ -36,7 +36,7 @@ public class Riak {
 	/**
 	 * logger
 	 */
-	private final static Logger logger = LoggerFactory.getLogger(Riak.class);
+	private final static Logger logger = LogManager.getLogger(Riak.class);
 	/**
 	 * riak集群
 	 */

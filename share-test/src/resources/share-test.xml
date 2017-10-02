@@ -12,7 +12,6 @@
 	<import resource="classpath:share-dao.xml" />
 
 
-
 	<!-- 数据格式转换器 -->
 	<mvc:annotation-driven>
 		<mvc:argument-resolvers>
@@ -20,13 +19,6 @@
 		</mvc:argument-resolvers>
 	</mvc:annotation-driven>
 
-	<bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
-		<property name="messageConverters">
-			<list>
-				<bean class="com.share.test.http.server.ShareHttpMessageConverter" />
-			</list>
-		</property>
-	</bean>
 
 	<!-- 自动加载配置 -->
 	<bean class="com.share.core.annotation.processor.ConfigProcessor" init-method="init">

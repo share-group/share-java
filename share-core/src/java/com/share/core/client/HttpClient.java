@@ -36,15 +36,14 @@ import org.apache.http.conn.ssl.NoopHostnameVerifier;
 import org.apache.http.conn.ssl.SSLConnectionSocketFactory;
 import org.apache.http.entity.ByteArrayEntity;
 import org.apache.http.entity.StringEntity;
-import org.apache.http.entity.mime.MultipartEntityBuilder;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.ssl.SSLContexts;
 import org.apache.http.util.EntityUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.share.core.util.StringUtil;
 import com.share.core.util.SystemUtil;
@@ -57,7 +56,7 @@ public final class HttpClient {
 	/**
 	 * logger
 	 */
-	private final static Logger logger = LoggerFactory.getLogger(HttpClient.class);
+	private final static Logger logger = LogManager.getLogger(HttpClient.class);
 	/**
 	 * 默认字符集
 	 */
@@ -147,7 +146,7 @@ public final class HttpClient {
 		boolean isCert = !keystore.isEmpty() && !cert.isEmpty() && !password.isEmpty() && sslProtocols.length > 0;
 
 		try {
-			RegistryBuilder<ConnectionSocketFactory> socketFactoryRegistry = RegistryBuilder.<ConnectionSocketFactory> create();
+			RegistryBuilder<ConnectionSocketFactory> socketFactoryRegistry = RegistryBuilder.<ConnectionSocketFactory>create();
 			socketFactoryRegistry.register("http", PlainConnectionSocketFactory.getSocketFactory());
 			if (isCert) {
 				KeyStore keyStore = KeyStore.getInstance(keystore);
@@ -450,44 +449,6 @@ public final class HttpClient {
 			logger.error("", e);
 		} finally {
 			httppost.releaseConnection();
-		}
-		return null;
-	}
-
-	/**
-	 * 上传文件
-	 * @param url 要上传的url
-	 * @param filepath 文件路径
-	 * @param filePartName 文件上传域的名
-	 */
-	public String uploadFile(String url, String filepath, String filePartName) {
-		return uploadFile(url, null, filepath, filePartName);
-	}
-
-	/**
-	 * 上传文件
-	 * @param url 要上传的url
-	 * @param data 附带参数
-	 * @param filepath 文件路径
-	 * @param filePartName 文件上传域的名
-	 */
-	public String uploadFile(String url, Map<String, Object> data, String filepath, String filePartName) {
-		HttpPost httpPost = new HttpPost(url);
-		try {
-			MultipartEntityBuilder multipartEntityBuilder = MultipartEntityBuilder.create();
-			multipartEntityBuilder.addBinaryBody("file", new File(filepath));
-			if (data != null && !data.isEmpty()) {
-				for (Entry<String, Object> e : data.entrySet()) {
-					multipartEntityBuilder.addTextBody(StringUtil.getString(e.getKey()), StringUtil.getString(e.getValue()));
-				}
-			}
-			httpPost.setEntity(multipartEntityBuilder.build());
-			HttpResponse response = client.execute(httpPost);
-			return StringUtil.getString(EntityUtils.toString(response.getEntity(), charset));
-		} catch (Exception e) {
-			logger.error("", e);
-		} finally {
-			httpPost.releaseConnection();
 		}
 		return null;
 	}

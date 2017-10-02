@@ -1,7 +1,7 @@
 package com.share.core.component;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.notnoop.apns.APNS;
 import com.share.core.util.FileSystem;
@@ -11,7 +11,7 @@ import com.share.core.util.FileSystem;
  * https://github.com/notnoop/java-apns
  */
 public class ApnsService {
-	private final static Logger logger = LoggerFactory.getLogger(ApnsService.class);
+	private final static Logger logger = LogManager.getLogger(ApnsService.class);
 
 	/**
 	 * 私有化构造函数，加载p12证书

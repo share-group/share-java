@@ -4,12 +4,10 @@ import java.net.URLDecoder;
 import java.net.URLEncoder;
 import java.util.regex.Pattern;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.google.common.base.CaseFormat;
-import com.share.core.util.Check;
-import com.share.core.util.SystemUtil;
 
 import net.sourceforge.pinyin4j.PinyinHelper;
 import net.sourceforge.pinyin4j.format.HanyuPinyinCaseType;
@@ -24,7 +22,7 @@ import net.sourceforge.pinyin4j.format.HanyuPinyinVCharType;
  * 
  */
 public final class StringUtil {
-	private final static Logger logger = LoggerFactory.getLogger(StringUtil.class);
+	private final static Logger logger = LogManager.getLogger(StringUtil.class);
 	private final static Pattern filterHTMLPattern = Pattern.compile("<!?\\/?[a-zA-Z]+[^><]*>");
 	private final static Pattern nbspPattern = Pattern.compile("&nbsp;");
 

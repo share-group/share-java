@@ -10,8 +10,8 @@ import javax.annotation.PostConstruct;
 import javax.crypto.Cipher;
 
 import org.apache.commons.lang3.ArrayUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.share.core.util.FileSystem;
 import com.share.core.util.Secret;
@@ -54,9 +54,9 @@ public class RSAService {
 	public void init() {
 		name = StringUtil.getString(name);
 		if (name.isEmpty()) {
-			logger = LoggerFactory.getLogger(RSAService.class);
+			logger = LogManager.getLogger(RSAService.class);
 		} else {
-			logger = LoggerFactory.getLogger(name);
+			logger = LogManager.getLogger(name);
 		}
 
 		//加载公钥    

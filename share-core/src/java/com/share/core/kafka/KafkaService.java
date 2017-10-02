@@ -48,8 +48,9 @@ public class KafkaService {
 		Map<String, List<KafkaStream<String, String>>> consumerMap = consumer.createMessageStreams(topicCountMap, keyDecoder, valueDecoder);
 		KafkaStream<String, String> stream = consumerMap.get(TOPIC).get(0);
 		ConsumerIterator<String, String> it = stream.iterator();
-		while (it.hasNext())
+		while (it.hasNext()) {
 			System.out.println(it.next().message());
+		}
 	}
 
 	public static void main(String[] args) {

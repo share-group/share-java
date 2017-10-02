@@ -4,8 +4,8 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  * redis分布式锁
@@ -16,7 +16,7 @@ public class RedisDistributedLock implements Lock {
 	/**
 	 * logger
 	 */
-	private final static Logger logger = LoggerFactory.getLogger(RedisDistributedLock.class);
+	private final static Logger logger = LogManager.getLogger(RedisDistributedLock.class);
 	/**
 	 * 锁名
 	 */
