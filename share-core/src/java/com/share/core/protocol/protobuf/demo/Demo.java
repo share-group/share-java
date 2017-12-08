@@ -13,31 +13,31 @@ public final class Demo {
       com.google.protobuf.MessageLiteOrBuilder {
 
     /**
-     * <code>optional sint32 protocol = 1;</code>
+     * <code>sint32 protocol = 1;</code>
      */
     int getProtocol();
 
     /**
-     * <code>optional sint32 id = 2;</code>
+     * <code>sint32 id = 2;</code>
      */
     int getId();
 
     /**
-     * <code>optional string name = 3;</code>
+     * <code>string name = 3;</code>
      */
     java.lang.String getName();
     /**
-     * <code>optional string name = 3;</code>
+     * <code>string name = 3;</code>
      */
     com.google.protobuf.ByteString
         getNameBytes();
 
     /**
-     * <code>optional string email = 4;</code>
+     * <code>string email = 4;</code>
      */
     java.lang.String getEmail();
     /**
-     * <code>optional string email = 4;</code>
+     * <code>string email = 4;</code>
      */
     com.google.protobuf.ByteString
         getEmailBytes();
@@ -57,20 +57,20 @@ public final class Demo {
     public static final int PROTOCOL_FIELD_NUMBER = 1;
     private int protocol_;
     /**
-     * <code>optional sint32 protocol = 1;</code>
+     * <code>sint32 protocol = 1;</code>
      */
     public int getProtocol() {
       return protocol_;
     }
     /**
-     * <code>optional sint32 protocol = 1;</code>
+     * <code>sint32 protocol = 1;</code>
      */
     private void setProtocol(int value) {
       
       protocol_ = value;
     }
     /**
-     * <code>optional sint32 protocol = 1;</code>
+     * <code>sint32 protocol = 1;</code>
      */
     private void clearProtocol() {
       
@@ -80,20 +80,20 @@ public final class Demo {
     public static final int ID_FIELD_NUMBER = 2;
     private int id_;
     /**
-     * <code>optional sint32 id = 2;</code>
+     * <code>sint32 id = 2;</code>
      */
     public int getId() {
       return id_;
     }
     /**
-     * <code>optional sint32 id = 2;</code>
+     * <code>sint32 id = 2;</code>
      */
     private void setId(int value) {
       
       id_ = value;
     }
     /**
-     * <code>optional sint32 id = 2;</code>
+     * <code>sint32 id = 2;</code>
      */
     private void clearId() {
       
@@ -103,20 +103,20 @@ public final class Demo {
     public static final int NAME_FIELD_NUMBER = 3;
     private java.lang.String name_;
     /**
-     * <code>optional string name = 3;</code>
+     * <code>string name = 3;</code>
      */
     public java.lang.String getName() {
       return name_;
     }
     /**
-     * <code>optional string name = 3;</code>
+     * <code>string name = 3;</code>
      */
     public com.google.protobuf.ByteString
         getNameBytes() {
       return com.google.protobuf.ByteString.copyFromUtf8(name_);
     }
     /**
-     * <code>optional string name = 3;</code>
+     * <code>string name = 3;</code>
      */
     private void setName(
         java.lang.String value) {
@@ -127,14 +127,14 @@ public final class Demo {
       name_ = value;
     }
     /**
-     * <code>optional string name = 3;</code>
+     * <code>string name = 3;</code>
      */
     private void clearName() {
       
       name_ = getDefaultInstance().getName();
     }
     /**
-     * <code>optional string name = 3;</code>
+     * <code>string name = 3;</code>
      */
     private void setNameBytes(
         com.google.protobuf.ByteString value) {
@@ -149,20 +149,20 @@ public final class Demo {
     public static final int EMAIL_FIELD_NUMBER = 4;
     private java.lang.String email_;
     /**
-     * <code>optional string email = 4;</code>
+     * <code>string email = 4;</code>
      */
     public java.lang.String getEmail() {
       return email_;
     }
     /**
-     * <code>optional string email = 4;</code>
+     * <code>string email = 4;</code>
      */
     public com.google.protobuf.ByteString
         getEmailBytes() {
       return com.google.protobuf.ByteString.copyFromUtf8(email_);
     }
     /**
-     * <code>optional string email = 4;</code>
+     * <code>string email = 4;</code>
      */
     private void setEmail(
         java.lang.String value) {
@@ -173,14 +173,14 @@ public final class Demo {
       email_ = value;
     }
     /**
-     * <code>optional string email = 4;</code>
+     * <code>string email = 4;</code>
      */
     private void clearEmail() {
       
       email_ = getDefaultInstance().getEmail();
     }
     /**
-     * <code>optional string email = 4;</code>
+     * <code>string email = 4;</code>
      */
     private void setEmailBytes(
         com.google.protobuf.ByteString value) {
@@ -206,6 +206,7 @@ public final class Demo {
       if (!email_.isEmpty()) {
         output.writeString(4, getEmail());
       }
+      unknownFields.writeTo(output);
     }
 
     public int getSerializedSize() {
@@ -229,10 +230,24 @@ public final class Demo {
         size += com.google.protobuf.CodedOutputStream
           .computeStringSize(4, getEmail());
       }
+      size += unknownFields.getSerializedSize();
       memoizedSerializedSize = size;
       return size;
     }
 
+    public static com.share.core.protocol.protobuf.demo.Demo.ReqDemo parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
+    }
+    public static com.share.core.protocol.protobuf.demo.Demo.ReqDemo parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
+    }
     public static com.share.core.protocol.protobuf.demo.Demo.ReqDemo parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -295,10 +310,10 @@ public final class Demo {
     }
 
     public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
+      return (Builder) DEFAULT_INSTANCE.createBuilder();
     }
     public static Builder newBuilder(com.share.core.protocol.protobuf.demo.Demo.ReqDemo prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+      return (Builder) DEFAULT_INSTANCE.createBuilder(prototype);
     }
 
     /**
@@ -316,13 +331,13 @@ public final class Demo {
 
 
       /**
-       * <code>optional sint32 protocol = 1;</code>
+       * <code>sint32 protocol = 1;</code>
        */
       public int getProtocol() {
         return instance.getProtocol();
       }
       /**
-       * <code>optional sint32 protocol = 1;</code>
+       * <code>sint32 protocol = 1;</code>
        */
       public Builder setProtocol(int value) {
         copyOnWrite();
@@ -330,7 +345,7 @@ public final class Demo {
         return this;
       }
       /**
-       * <code>optional sint32 protocol = 1;</code>
+       * <code>sint32 protocol = 1;</code>
        */
       public Builder clearProtocol() {
         copyOnWrite();
@@ -339,13 +354,13 @@ public final class Demo {
       }
 
       /**
-       * <code>optional sint32 id = 2;</code>
+       * <code>sint32 id = 2;</code>
        */
       public int getId() {
         return instance.getId();
       }
       /**
-       * <code>optional sint32 id = 2;</code>
+       * <code>sint32 id = 2;</code>
        */
       public Builder setId(int value) {
         copyOnWrite();
@@ -353,7 +368,7 @@ public final class Demo {
         return this;
       }
       /**
-       * <code>optional sint32 id = 2;</code>
+       * <code>sint32 id = 2;</code>
        */
       public Builder clearId() {
         copyOnWrite();
@@ -362,20 +377,20 @@ public final class Demo {
       }
 
       /**
-       * <code>optional string name = 3;</code>
+       * <code>string name = 3;</code>
        */
       public java.lang.String getName() {
         return instance.getName();
       }
       /**
-       * <code>optional string name = 3;</code>
+       * <code>string name = 3;</code>
        */
       public com.google.protobuf.ByteString
           getNameBytes() {
         return instance.getNameBytes();
       }
       /**
-       * <code>optional string name = 3;</code>
+       * <code>string name = 3;</code>
        */
       public Builder setName(
           java.lang.String value) {
@@ -384,7 +399,7 @@ public final class Demo {
         return this;
       }
       /**
-       * <code>optional string name = 3;</code>
+       * <code>string name = 3;</code>
        */
       public Builder clearName() {
         copyOnWrite();
@@ -392,7 +407,7 @@ public final class Demo {
         return this;
       }
       /**
-       * <code>optional string name = 3;</code>
+       * <code>string name = 3;</code>
        */
       public Builder setNameBytes(
           com.google.protobuf.ByteString value) {
@@ -402,20 +417,20 @@ public final class Demo {
       }
 
       /**
-       * <code>optional string email = 4;</code>
+       * <code>string email = 4;</code>
        */
       public java.lang.String getEmail() {
         return instance.getEmail();
       }
       /**
-       * <code>optional string email = 4;</code>
+       * <code>string email = 4;</code>
        */
       public com.google.protobuf.ByteString
           getEmailBytes() {
         return instance.getEmailBytes();
       }
       /**
-       * <code>optional string email = 4;</code>
+       * <code>string email = 4;</code>
        */
       public Builder setEmail(
           java.lang.String value) {
@@ -424,7 +439,7 @@ public final class Demo {
         return this;
       }
       /**
-       * <code>optional string email = 4;</code>
+       * <code>string email = 4;</code>
        */
       public Builder clearEmail() {
         copyOnWrite();
@@ -432,7 +447,7 @@ public final class Demo {
         return this;
       }
       /**
-       * <code>optional string email = 4;</code>
+       * <code>string email = 4;</code>
        */
       public Builder setEmailBytes(
           com.google.protobuf.ByteString value) {
@@ -443,9 +458,10 @@ public final class Demo {
 
       // @@protoc_insertion_point(builder_scope:com.share.core.protocol.protobuf.demo.ReqDemo)
     }
-    protected final Object dynamicMethod(
+    @java.lang.SuppressWarnings({"unchecked", "fallthrough"})
+    protected final java.lang.Object dynamicMethod(
         com.google.protobuf.GeneratedMessageLite.MethodToInvoke method,
-        Object arg0, Object arg1) {
+        java.lang.Object arg0, java.lang.Object arg1) {
       switch (method) {
         case NEW_MUTABLE_INSTANCE: {
           return new com.share.core.protocol.protobuf.demo.Demo.ReqDemo();
@@ -480,6 +496,9 @@ public final class Demo {
               (com.google.protobuf.CodedInputStream) arg0;
           com.google.protobuf.ExtensionRegistryLite extensionRegistry =
               (com.google.protobuf.ExtensionRegistryLite) arg1;
+          if (extensionRegistry == null) {
+            throw new java.lang.NullPointerException();
+          }
           try {
             boolean done = false;
             while (!done) {
@@ -489,7 +508,7 @@ public final class Demo {
                   done = true;
                   break;
                 default: {
-                  if (!input.skipField(tag)) {
+                  if (!parseUnknownField(tag, input)) {
                     done = true;
                   }
                   break;
@@ -505,13 +524,13 @@ public final class Demo {
                   break;
                 }
                 case 26: {
-                  String s = input.readStringRequireUtf8();
+                  java.lang.String s = input.readStringRequireUtf8();
 
                   name_ = s;
                   break;
                 }
                 case 34: {
-                  String s = input.readStringRequireUtf8();
+                  java.lang.String s = input.readStringRequireUtf8();
 
                   email_ = s;
                   break;
@@ -527,6 +546,7 @@ public final class Demo {
           } finally {
           }
         }
+        // fall through
         case GET_DEFAULT_INSTANCE: {
           return DEFAULT_INSTANCE;
         }
@@ -538,7 +558,13 @@ public final class Demo {
             }
           }
           return PARSER;
-        }
+      }
+      case GET_MEMOIZED_IS_INITIALIZED: {
+        return (byte) 1;
+      }
+      case SET_MEMOIZED_IS_INITIALIZED: {
+        return null;
+      }
       }
       throw new UnsupportedOperationException();
     }
@@ -567,16 +593,16 @@ public final class Demo {
       com.google.protobuf.MessageLiteOrBuilder {
 
     /**
-     * <code>optional sint32 protocol = 1;</code>
+     * <code>sint32 protocol = 1;</code>
      */
     int getProtocol();
 
     /**
-     * <code>optional string email = 2;</code>
+     * <code>string email = 2;</code>
      */
     java.lang.String getEmail();
     /**
-     * <code>optional string email = 2;</code>
+     * <code>string email = 2;</code>
      */
     com.google.protobuf.ByteString
         getEmailBytes();
@@ -595,20 +621,20 @@ public final class Demo {
     public static final int PROTOCOL_FIELD_NUMBER = 1;
     private int protocol_;
     /**
-     * <code>optional sint32 protocol = 1;</code>
+     * <code>sint32 protocol = 1;</code>
      */
     public int getProtocol() {
       return protocol_;
     }
     /**
-     * <code>optional sint32 protocol = 1;</code>
+     * <code>sint32 protocol = 1;</code>
      */
     private void setProtocol(int value) {
       
       protocol_ = value;
     }
     /**
-     * <code>optional sint32 protocol = 1;</code>
+     * <code>sint32 protocol = 1;</code>
      */
     private void clearProtocol() {
       
@@ -618,20 +644,20 @@ public final class Demo {
     public static final int EMAIL_FIELD_NUMBER = 2;
     private java.lang.String email_;
     /**
-     * <code>optional string email = 2;</code>
+     * <code>string email = 2;</code>
      */
     public java.lang.String getEmail() {
       return email_;
     }
     /**
-     * <code>optional string email = 2;</code>
+     * <code>string email = 2;</code>
      */
     public com.google.protobuf.ByteString
         getEmailBytes() {
       return com.google.protobuf.ByteString.copyFromUtf8(email_);
     }
     /**
-     * <code>optional string email = 2;</code>
+     * <code>string email = 2;</code>
      */
     private void setEmail(
         java.lang.String value) {
@@ -642,14 +668,14 @@ public final class Demo {
       email_ = value;
     }
     /**
-     * <code>optional string email = 2;</code>
+     * <code>string email = 2;</code>
      */
     private void clearEmail() {
       
       email_ = getDefaultInstance().getEmail();
     }
     /**
-     * <code>optional string email = 2;</code>
+     * <code>string email = 2;</code>
      */
     private void setEmailBytes(
         com.google.protobuf.ByteString value) {
@@ -669,6 +695,7 @@ public final class Demo {
       if (!email_.isEmpty()) {
         output.writeString(2, getEmail());
       }
+      unknownFields.writeTo(output);
     }
 
     public int getSerializedSize() {
@@ -684,10 +711,24 @@ public final class Demo {
         size += com.google.protobuf.CodedOutputStream
           .computeStringSize(2, getEmail());
       }
+      size += unknownFields.getSerializedSize();
       memoizedSerializedSize = size;
       return size;
     }
 
+    public static com.share.core.protocol.protobuf.demo.Demo.ResDemo parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data);
+    }
+    public static com.share.core.protocol.protobuf.demo.Demo.ResDemo parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return com.google.protobuf.GeneratedMessageLite.parseFrom(
+          DEFAULT_INSTANCE, data, extensionRegistry);
+    }
     public static com.share.core.protocol.protobuf.demo.Demo.ResDemo parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -750,10 +791,10 @@ public final class Demo {
     }
 
     public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
+      return (Builder) DEFAULT_INSTANCE.createBuilder();
     }
     public static Builder newBuilder(com.share.core.protocol.protobuf.demo.Demo.ResDemo prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+      return (Builder) DEFAULT_INSTANCE.createBuilder(prototype);
     }
 
     /**
@@ -771,13 +812,13 @@ public final class Demo {
 
 
       /**
-       * <code>optional sint32 protocol = 1;</code>
+       * <code>sint32 protocol = 1;</code>
        */
       public int getProtocol() {
         return instance.getProtocol();
       }
       /**
-       * <code>optional sint32 protocol = 1;</code>
+       * <code>sint32 protocol = 1;</code>
        */
       public Builder setProtocol(int value) {
         copyOnWrite();
@@ -785,7 +826,7 @@ public final class Demo {
         return this;
       }
       /**
-       * <code>optional sint32 protocol = 1;</code>
+       * <code>sint32 protocol = 1;</code>
        */
       public Builder clearProtocol() {
         copyOnWrite();
@@ -794,20 +835,20 @@ public final class Demo {
       }
 
       /**
-       * <code>optional string email = 2;</code>
+       * <code>string email = 2;</code>
        */
       public java.lang.String getEmail() {
         return instance.getEmail();
       }
       /**
-       * <code>optional string email = 2;</code>
+       * <code>string email = 2;</code>
        */
       public com.google.protobuf.ByteString
           getEmailBytes() {
         return instance.getEmailBytes();
       }
       /**
-       * <code>optional string email = 2;</code>
+       * <code>string email = 2;</code>
        */
       public Builder setEmail(
           java.lang.String value) {
@@ -816,7 +857,7 @@ public final class Demo {
         return this;
       }
       /**
-       * <code>optional string email = 2;</code>
+       * <code>string email = 2;</code>
        */
       public Builder clearEmail() {
         copyOnWrite();
@@ -824,7 +865,7 @@ public final class Demo {
         return this;
       }
       /**
-       * <code>optional string email = 2;</code>
+       * <code>string email = 2;</code>
        */
       public Builder setEmailBytes(
           com.google.protobuf.ByteString value) {
@@ -835,9 +876,10 @@ public final class Demo {
 
       // @@protoc_insertion_point(builder_scope:com.share.core.protocol.protobuf.demo.ResDemo)
     }
-    protected final Object dynamicMethod(
+    @java.lang.SuppressWarnings({"unchecked", "fallthrough"})
+    protected final java.lang.Object dynamicMethod(
         com.google.protobuf.GeneratedMessageLite.MethodToInvoke method,
-        Object arg0, Object arg1) {
+        java.lang.Object arg0, java.lang.Object arg1) {
       switch (method) {
         case NEW_MUTABLE_INSTANCE: {
           return new com.share.core.protocol.protobuf.demo.Demo.ResDemo();
@@ -868,6 +910,9 @@ public final class Demo {
               (com.google.protobuf.CodedInputStream) arg0;
           com.google.protobuf.ExtensionRegistryLite extensionRegistry =
               (com.google.protobuf.ExtensionRegistryLite) arg1;
+          if (extensionRegistry == null) {
+            throw new java.lang.NullPointerException();
+          }
           try {
             boolean done = false;
             while (!done) {
@@ -877,7 +922,7 @@ public final class Demo {
                   done = true;
                   break;
                 default: {
-                  if (!input.skipField(tag)) {
+                  if (!parseUnknownField(tag, input)) {
                     done = true;
                   }
                   break;
@@ -888,7 +933,7 @@ public final class Demo {
                   break;
                 }
                 case 18: {
-                  String s = input.readStringRequireUtf8();
+                  java.lang.String s = input.readStringRequireUtf8();
 
                   email_ = s;
                   break;
@@ -904,6 +949,7 @@ public final class Demo {
           } finally {
           }
         }
+        // fall through
         case GET_DEFAULT_INSTANCE: {
           return DEFAULT_INSTANCE;
         }
@@ -915,7 +961,13 @@ public final class Demo {
             }
           }
           return PARSER;
-        }
+      }
+      case GET_MEMOIZED_IS_INITIALIZED: {
+        return (byte) 1;
+      }
+      case SET_MEMOIZED_IS_INITIALIZED: {
+        return null;
+      }
       }
       throw new UnsupportedOperationException();
     }

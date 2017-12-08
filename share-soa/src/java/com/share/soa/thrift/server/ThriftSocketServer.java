@@ -61,7 +61,7 @@ public class ThriftSocketServer extends AbstractServer {
 			// 设置selector线程和worker线程
 			int selectorThreads = FileSystem.getPropertyInt("thrift.socket.selectorThreads");
 			int workerThreads = FileSystem.getPropertyInt("thrift.socket.workerThreads");
-			
+
 			// 如果没有设置，就用cpu核心数x2
 			if (selectorThreads <= 0) {
 				selectorThreads = SystemUtil.getCore();
