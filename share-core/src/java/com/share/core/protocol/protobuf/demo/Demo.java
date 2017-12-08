@@ -13,11 +13,19 @@ public final class Demo {
       com.google.protobuf.MessageLiteOrBuilder {
 
     /**
+     * <pre>
+     * cccccccccccccccc
+     * </pre>
+     *
      * <code>sint32 protocol = 1;</code>
      */
     int getProtocol();
 
     /**
+     * <pre>
+     * 今后改革计划公开呼庚呼癸
+     * </pre>
+     *
      * <code>sint32 id = 2;</code>
      */
     int getId();
@@ -57,12 +65,20 @@ public final class Demo {
     public static final int PROTOCOL_FIELD_NUMBER = 1;
     private int protocol_;
     /**
+     * <pre>
+     * cccccccccccccccc
+     * </pre>
+     *
      * <code>sint32 protocol = 1;</code>
      */
     public int getProtocol() {
       return protocol_;
     }
     /**
+     * <pre>
+     * cccccccccccccccc
+     * </pre>
+     *
      * <code>sint32 protocol = 1;</code>
      */
     private void setProtocol(int value) {
@@ -70,6 +86,10 @@ public final class Demo {
       protocol_ = value;
     }
     /**
+     * <pre>
+     * cccccccccccccccc
+     * </pre>
+     *
      * <code>sint32 protocol = 1;</code>
      */
     private void clearProtocol() {
@@ -80,12 +100,20 @@ public final class Demo {
     public static final int ID_FIELD_NUMBER = 2;
     private int id_;
     /**
+     * <pre>
+     * 今后改革计划公开呼庚呼癸
+     * </pre>
+     *
      * <code>sint32 id = 2;</code>
      */
     public int getId() {
       return id_;
     }
     /**
+     * <pre>
+     * 今后改革计划公开呼庚呼癸
+     * </pre>
+     *
      * <code>sint32 id = 2;</code>
      */
     private void setId(int value) {
@@ -93,6 +121,10 @@ public final class Demo {
       id_ = value;
     }
     /**
+     * <pre>
+     * 今后改革计划公开呼庚呼癸
+     * </pre>
+     *
      * <code>sint32 id = 2;</code>
      */
     private void clearId() {
@@ -310,10 +342,10 @@ public final class Demo {
     }
 
     public static Builder newBuilder() {
-      return (Builder) DEFAULT_INSTANCE.createBuilder();
+      return DEFAULT_INSTANCE.toBuilder();
     }
     public static Builder newBuilder(com.share.core.protocol.protobuf.demo.Demo.ReqDemo prototype) {
-      return (Builder) DEFAULT_INSTANCE.createBuilder(prototype);
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
 
     /**
@@ -331,12 +363,20 @@ public final class Demo {
 
 
       /**
+       * <pre>
+       * cccccccccccccccc
+       * </pre>
+       *
        * <code>sint32 protocol = 1;</code>
        */
       public int getProtocol() {
         return instance.getProtocol();
       }
       /**
+       * <pre>
+       * cccccccccccccccc
+       * </pre>
+       *
        * <code>sint32 protocol = 1;</code>
        */
       public Builder setProtocol(int value) {
@@ -345,6 +385,10 @@ public final class Demo {
         return this;
       }
       /**
+       * <pre>
+       * cccccccccccccccc
+       * </pre>
+       *
        * <code>sint32 protocol = 1;</code>
        */
       public Builder clearProtocol() {
@@ -354,12 +398,20 @@ public final class Demo {
       }
 
       /**
+       * <pre>
+       * 今后改革计划公开呼庚呼癸
+       * </pre>
+       *
        * <code>sint32 id = 2;</code>
        */
       public int getId() {
         return instance.getId();
       }
       /**
+       * <pre>
+       * 今后改革计划公开呼庚呼癸
+       * </pre>
+       *
        * <code>sint32 id = 2;</code>
        */
       public Builder setId(int value) {
@@ -368,6 +420,10 @@ public final class Demo {
         return this;
       }
       /**
+       * <pre>
+       * 今后改革计划公开呼庚呼癸
+       * </pre>
+       *
        * <code>sint32 id = 2;</code>
        */
       public Builder clearId() {
@@ -496,9 +552,6 @@ public final class Demo {
               (com.google.protobuf.CodedInputStream) arg0;
           com.google.protobuf.ExtensionRegistryLite extensionRegistry =
               (com.google.protobuf.ExtensionRegistryLite) arg1;
-          if (extensionRegistry == null) {
-            throw new java.lang.NullPointerException();
-          }
           try {
             boolean done = false;
             while (!done) {
@@ -558,13 +611,7 @@ public final class Demo {
             }
           }
           return PARSER;
-      }
-      case GET_MEMOIZED_IS_INITIALIZED: {
-        return (byte) 1;
-      }
-      case SET_MEMOIZED_IS_INITIALIZED: {
-        return null;
-      }
+        }
       }
       throw new UnsupportedOperationException();
     }
@@ -791,10 +838,10 @@ public final class Demo {
     }
 
     public static Builder newBuilder() {
-      return (Builder) DEFAULT_INSTANCE.createBuilder();
+      return DEFAULT_INSTANCE.toBuilder();
     }
     public static Builder newBuilder(com.share.core.protocol.protobuf.demo.Demo.ResDemo prototype) {
-      return (Builder) DEFAULT_INSTANCE.createBuilder(prototype);
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
 
     /**
@@ -910,9 +957,6 @@ public final class Demo {
               (com.google.protobuf.CodedInputStream) arg0;
           com.google.protobuf.ExtensionRegistryLite extensionRegistry =
               (com.google.protobuf.ExtensionRegistryLite) arg1;
-          if (extensionRegistry == null) {
-            throw new java.lang.NullPointerException();
-          }
           try {
             boolean done = false;
             while (!done) {
@@ -961,13 +1005,7 @@ public final class Demo {
             }
           }
           return PARSER;
-      }
-      case GET_MEMOIZED_IS_INITIALIZED: {
-        return (byte) 1;
-      }
-      case SET_MEMOIZED_IS_INITIALIZED: {
-        return null;
-      }
+        }
       }
       throw new UnsupportedOperationException();
     }

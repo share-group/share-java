@@ -6,8 +6,8 @@ option optimize_for = LITE_RUNTIME;
 
 
 message ReqDemo{
-	sint32 protocol = 1;
-	sint32 id = 2;
+	sint32 protocol = 1; // cccccccccccccccc
+	sint32 id = 2; // 今后改革计划公开呼庚呼癸
 	string name = 3;
 	string email = 4;
 }
