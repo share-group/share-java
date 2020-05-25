@@ -1,5 +1,5 @@
 @echo off
-set thrift=%cd%\thrift-0.9.3.exe
+set thrift=%cd%\thrift-0.13.0.exe
 
 rd /s /q %cd%\..\share-soa\src\java\com\share\soa\thrift\protocol
 
